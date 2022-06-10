@@ -1,1 +1,8 @@
-
+spring:
+  application:
+    name: "reactive-web-demo-app"
+  main:
+    banner-mode: off
+  data:
+    mongodb:
+      database: resumes_reactive_app
