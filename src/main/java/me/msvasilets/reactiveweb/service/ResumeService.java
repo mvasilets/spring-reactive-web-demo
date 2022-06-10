@@ -10,9 +10,7 @@ public interface ResumeService {
 
     Mono<Resume> findById(String resumeId);
 
-    Mono<Resume> saveNew(Resume resume);
-
-    Flux<Resume> findAllBySkillsContains(List<String> requiredSkills);
+    Mono<Resume> saveNew(Mono<Resume> resume);
 
     Mono<Void> removeById(String resumeId);
 

@@ -8,5 +8,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ResumeRepository extends ReactiveMongoRepository<Resume, String> {
-    Flux<Resume> findAllBySkillsContaining(List<String> skills);
+
 }

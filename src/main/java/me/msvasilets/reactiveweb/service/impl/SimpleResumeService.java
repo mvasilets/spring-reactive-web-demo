@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import me.msvasilets.reactiveweb.domain.Resume;
 import me.msvasilets.reactiveweb.repository.ResumeRepository;
 import me.msvasilets.reactiveweb.service.ResumeService;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -22,17 +24,13 @@ public class SimpleResumeService implements ResumeService {
     }
 
     @Override
-    public Mono<Resume> saveNew(Resume resume) {
-        return repository.save(resume);
-    }
-
-    @Override
-    public Flux<Resume> findAllBySkillsContains(List<String> requiredSkills) {
-        return repository.findAllBySkillsContaining(requiredSkills);
+    public Mono<Resume> saveNew(Mono<Resume> resume) {
+        return resume.flatMap(repository::save);
     }
 
     @Override
     public Mono<Void> removeById(String resumeId) {
         return repository.deleteById(resumeId);
     }
+
 }
