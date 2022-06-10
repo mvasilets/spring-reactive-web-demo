@@ -1,4 +1,4 @@
-package me.msvasilets.reactivewebdemo;
+package me.msvasilets.reactiveweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
