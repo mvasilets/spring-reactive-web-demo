@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  mongodb:
+    container_name: resumes-db
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - $HOME/docker/volumes/mongodb:/data/db
+
+  resume-reactive-app:
+    container_name: app
+    image: me.msvasilets/reactive-web-demo:1.0.1
+    ports:
+      - "8080:8080"
+    environment:
+      MONGO_DB: resumes_reactive_app
+      MONGO_HOST: mongodb
+      MONGO_PORT: 27017
+      MONGO_USERNAME: admin
+      MONGO_PASSWORD: password
+    depends_on:
+      - mongodb
