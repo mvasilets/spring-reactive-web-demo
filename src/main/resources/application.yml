@@ -1,1 +1,13 @@
-
+spring:
+  application:
+    name: "reactive-web-demo-app"
+  main:
+    banner-mode: off
+  data:
+    mongodb:
+      database: ${MONGO_DB}
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+      authentication-database: admin
